@@ -1,92 +1,141 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shubham App & Web Tech</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shakti AI 2.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI';
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: white;
+  text-align: center;
+}
 
-    header {
-      background: #020617;
-      padding: 20px;
-      font-size: 24px;
-      font-weight: bold;
-    }
+/* HEADER */
+header {
+  padding: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  background: #020617;
+  color: #22c55e;
+}
 
-    .logo {
-      font-size: 30px;
-      margin: 10px;
-      color: #22c55e;
-    }
+/* HERO */
+.hero {
+  padding: 60px 20px;
+}
 
-    .hero {
-      padding: 40px;
-    }
+h1 {
+  font-size: 32px;
+}
 
-    .btn {
-      padding: 12px 20px;
-      background: #25D366;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      color: white;
-      cursor: pointer;
-    }
+/* BUTTON */
+.btn {
+  padding: 15px 30px;
+  background: linear-gradient(45deg, #22c55e, #4ade80);
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  color: black;
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: 0 0 20px #22c55e;
+}
 
-    .services {
-      padding: 20px;
-    }
+.btn:hover {
+  transform: scale(1.05);
+}
 
-    .card {
-      background: #1e293b;
-      margin: 10px;
-      padding: 15px;
-      border-radius: 10px;
-    }
+/* SECTION */
+.section {
+  padding: 30px;
+}
 
-    footer {
-      background: #020617;
-      padding: 20px;
-      margin-top: 20px;
-    }
-  </style>
+/* CARD */
+.card {
+  background: #1e293b;
+  margin: 12px;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* AI BOX */
+.ai-box {
+  margin-top: 30px;
+}
+
+input {
+  padding: 12px;
+  width: 75%;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+/* FOOTER */
+footer {
+  padding: 20px;
+  background: #020617;
+  margin-top: 30px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">🚀 Shubham App & Web Tech</div>
+🤖 Shakti AI 2.0
 </header>
 
 <div class="hero">
-  <h1>We Build Websites & Apps</h1>
-  <p>Professional Solutions for Your Business 💻</p>
+<h1>Powerful AI + Website Builder 🚀</h1>
+<p>Ask anything, build anything 💻</p>
 
-  <a href="https://wa.me/918825208568">
-    <button class="btn">📲 Contact on WhatsApp</button>
-  </a>
+<a href="https://wa.me/918825208568">
+<button class="btn">📲 Contact on WhatsApp</button>
+</a>
 </div>
 
-<div class="services">
-  <h2>Our Services</h2>
+<div class="section">
+<h2>Services</h2>
 
-  <div class="card">🌐 Business Website</div>
-  <div class="card">🏨 Hotel Website</div>
-  <div class="card">🛒 Shop Website</div>
-  <div class="card">📱 App Development</div>
+<div class="card">🌐 Website Development</div>
+<div class="card">📱 App Development</div>
+<div class="card">🤖 AI Tools</div>
+</div>
+
+<div class="section ai-box">
+<h2>Ask Shakti AI 🤖</h2>
+
+<input id="q" placeholder="Apna question likho...">
+<br><br>
+<button class="btn" onclick="askAI()">Ask AI</button>
+
+<p id="ans"></p>
 </div>
 
 <footer>
-  <p>📞 WhatsApp: +91 8825208568</p>
-  <p>© 2026 Shubham App & Web Tech</p>
+📞 WhatsApp: +91 8825208568
 </footer>
+
+<script>
+async function askAI(){
+let q = document.getElementById("q").value;
+
+document.getElementById("ans").innerText = "Thinking... 🤔";
+
+try{
+let res = await fetch("https://api.affiliateplus.xyz/api/chatbot?message=" + q + "&botname=ShaktiAI&ownername=Shubham");
+let data = await res.json();
+
+document.getElementById("ans").innerText = data.message;
+}catch(e){
+document.getElementById("ans").innerText = "Server busy 😓 try again";
+}
+}
+</script>
 
 </body>
 </html>
