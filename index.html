@@ -1,160 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Shakti AI 2.0</title>
+<title>Shakti AI Ultra</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body {
-  margin: 0;
-  font-family: Arial;
-  background: linear-gradient(135deg,#020617,#0f172a);
-  color: white;
-  text-align: center;
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(135deg,#020617,#0f172a);
+  color:white;
+  text-align:center;
 }
 
-header {
-  padding: 20px;
-  font-size: 24px;
-  color: #22c55e;
+header{
+  padding:20px;
+  font-size:24px;
+  color:#22c55e;
 }
 
-.hero {
-  padding: 50px 20px;
+.btn{
+  padding:14px 25px;
+  background:#22c55e;
+  border:none;
+  border-radius:10px;
+  margin:10px;
+  font-size:16px;
 }
 
-.btn {
-  padding: 15px 25px;
-  background: #22c55e;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0 0 15px #22c55e;
+.section{
+  padding:30px;
 }
 
-.section {
-  padding: 30px;
+.card{
+  background:#1e293b;
+  margin:10px;
+  padding:20px;
+  border-radius:10px;
+  cursor:pointer;
 }
 
-.card {
-  background: #1e293b;
-  margin: 12px;
-  padding: 20px;
-  border-radius: 10px;
-  cursor: pointer;
+input{
+  padding:10px;
+  width:70%;
+  border-radius:8px;
+  border:none;
 }
 
-.card:hover {
-  background: #334155;
-}
-
-#detail {
-  margin-top: 20px;
-  color: #22c55e;
-}
-
-input {
-  padding: 10px;
-  width: 70%;
-  border-radius: 8px;
-  border: none;
-}
-
-footer {
-  padding: 20px;
-  background: #020617;
+/* camera */
+video{
+  width:90%;
+  border-radius:10px;
+  margin-top:10px;
 }
 </style>
 </head>
 
 <body>
 
-<header>🤖 Shakti AI 2.0</header>
-
-<div class="hero">
-<h1>Powerful AI + Website Builder 🚀</h1>
-
-<a href="https://wa.me/918825208568">
-<button class="btn">📲 WhatsApp</button>
-</a>
-</div>
+<header>🤖 Shakti AI Ultra</header>
 
 <div class="section">
-<h2>Services</h2>
+<h2>🚀 Services</h2>
 
-<div class="card" onclick="showDetail('website')">🌐 Website Development</div>
-<div class="card" onclick="showDetail('app')">📱 App Development</div>
-<div class="card" onclick="showDetail('ai')">🤖 AI Tools</div>
+<div class="card" onclick="show('website')">🌐 Website</div>
+<div class="card" onclick="show('app')">📱 App</div>
+<div class="card" onclick="show('ai')">🤖 AI Tools</div>
 
 <p id="detail"></p>
 </div>
 
 <div class="section">
-<h2>Ask Shakti AI 🤖</h2>
+<h2>🤖 AI Chat</h2>
 
-<input id="q" placeholder="Ask anything...">
-<br><br>
-<button class="btn" onclick="askAI()">Ask AI</button>
+<input id="q" placeholder="Ask anything..."><br><br>
+
+<button class="btn" onclick="askAI()">Ask</button>
+<button class="btn" onclick="voice()">🎤 Voice</button>
 
 <p id="ans"></p>
 </div>
 
+<div class="section">
+<h2>📷 Camera Scan</h2>
+
+<button class="btn" onclick="startCam()">Open Camera</button>
+<br>
+<video id="cam" autoplay></video>
+
+</div>
+
 <footer>
-📞 WhatsApp: +91 8825208568
+📞 WhatsApp: 8825208568
 </footer>
 
 <script>
 
-// SERVICE DETAIL
-function showDetail(type){
-let text = "";
-
+// SERVICE
+function show(type){
 if(type==="website"){
-text = "We create modern business websites 💻 starting ₹999";
+document.getElementById("detail").innerText="Website ₹999 se";
 }
 else if(type==="app"){
-text = "We build Android apps 📱 with latest features";
+document.getElementById("detail").innerText="Android app banega";
 }
 else{
-text = "We create AI tools 🤖 chatbot, automation, etc";
+document.getElementById("detail").innerText="AI chatbot + tools";
+}
 }
 
-document.getElementById("detail").innerText = text;
-}
-
-
-// AI FUNCTION (with backup)
+// AI
 async function askAI(){
-let q = document.getElementById("q").value.toLowerCase();
-
-document.getElementById("ans").innerText = "Thinking... 🤔";
+let q=document.getElementById("q").value.toLowerCase();
+document.getElementById("ans").innerText="Thinking...";
 
 try{
-let res = await fetch("https://api.affiliateplus.xyz/api/chatbot?message=" + q);
-let data = await res.json();
-
-document.getElementById("ans").innerText = data.message;
+let res=await fetch("https://api.affiliateplus.xyz/api/chatbot?message="+q);
+let data=await res.json();
+document.getElementById("ans").innerText=data.message;
 }
 catch{
-
-// fallback AI (important)
-if(q.includes("hello")){
-document.getElementById("ans").innerText = "Hello bhai 👋";
+if(q.includes("hello")) document.getElementById("ans").innerText="Hello 👋";
+else if(q.includes("price")) document.getElementById("ans").innerText="₹999 start";
+else document.getElementById("ans").innerText="WhatsApp karo";
 }
-else if(q.includes("price")){
-document.getElementById("ans").innerText = "Website ₹999 se start 💰";
-}
-else if(q.includes("app")){
-document.getElementById("ans").innerText = "Android app available 📱";
-}
-else{
-document.getElementById("ans").innerText = "WhatsApp pe contact karo 👍";
 }
 
+// VOICE
+function voice(){
+let recognition=new(window.SpeechRecognition||window.webkitSpeechRecognition)();
+recognition.onresult=function(e){
+let text=e.results[0][0].transcript;
+document.getElementById("q").value=text;
+askAI();
+}
+recognition.start();
 }
 
+// CAMERA
+async function startCam(){
+let stream=await navigator.mediaDevices.getUserMedia({video:true});
+document.getElementById("cam").srcObject=stream;
 }
+
 </script>
 
 </body>
