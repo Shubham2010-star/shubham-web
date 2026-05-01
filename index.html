@@ -7,109 +7,93 @@
 <style>
 body {
   margin: 0;
-  font-family: 'Segoe UI';
-  background: linear-gradient(135deg, #020617, #0f172a);
+  font-family: Arial;
+  background: linear-gradient(135deg,#020617,#0f172a);
   color: white;
   text-align: center;
 }
 
-/* HEADER */
 header {
   padding: 20px;
-  font-size: 26px;
-  font-weight: bold;
-  background: #020617;
+  font-size: 24px;
   color: #22c55e;
 }
 
-/* HERO */
 .hero {
-  padding: 60px 20px;
+  padding: 50px 20px;
 }
 
-h1 {
-  font-size: 32px;
-}
-
-/* BUTTON */
 .btn {
-  padding: 15px 30px;
-  background: linear-gradient(45deg, #22c55e, #4ade80);
+  padding: 15px 25px;
+  background: #22c55e;
   border: none;
-  border-radius: 12px;
-  font-size: 18px;
-  color: black;
+  border-radius: 10px;
+  font-size: 16px;
   cursor: pointer;
-  margin-top: 20px;
-  box-shadow: 0 0 20px #22c55e;
+  box-shadow: 0 0 15px #22c55e;
 }
 
-.btn:hover {
-  transform: scale(1.05);
-}
-
-/* SECTION */
 .section {
   padding: 30px;
 }
 
-/* CARD */
 .card {
   background: #1e293b;
   margin: 12px;
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
-/* AI BOX */
-.ai-box {
-  margin-top: 30px;
+.card:hover {
+  background: #334155;
+}
+
+#detail {
+  margin-top: 20px;
+  color: #22c55e;
 }
 
 input {
-  padding: 12px;
-  width: 75%;
-  border-radius: 10px;
+  padding: 10px;
+  width: 70%;
+  border-radius: 8px;
   border: none;
-  outline: none;
 }
 
-/* FOOTER */
 footer {
   padding: 20px;
   background: #020617;
-  margin-top: 30px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-🤖 Shakti AI 2.0
-</header>
+<header>🤖 Shakti AI 2.0</header>
 
 <div class="hero">
 <h1>Powerful AI + Website Builder 🚀</h1>
-<p>Ask anything, build anything 💻</p>
 
 <a href="https://wa.me/918825208568">
-<button class="btn">📲 Contact on WhatsApp</button>
+<button class="btn">📲 WhatsApp</button>
 </a>
 </div>
 
 <div class="section">
 <h2>Services</h2>
 
-<div class="card">🌐 Website Development</div>
-<div class="card">📱 App Development</div>
-<div class="card">🤖 AI Tools</div>
+<div class="card" onclick="showDetail('website')">🌐 Website Development</div>
+<div class="card" onclick="showDetail('app')">📱 App Development</div>
+<div class="card" onclick="showDetail('ai')">🤖 AI Tools</div>
+
+<p id="detail"></p>
 </div>
 
-<div class="section ai-box">
+<div class="section">
 <h2>Ask Shakti AI 🤖</h2>
 
-<input id="q" placeholder="Apna question likho...">
+<input id="q" placeholder="Ask anything...">
 <br><br>
 <button class="btn" onclick="askAI()">Ask AI</button>
 
@@ -121,19 +105,55 @@ footer {
 </footer>
 
 <script>
+
+// SERVICE DETAIL
+function showDetail(type){
+let text = "";
+
+if(type==="website"){
+text = "We create modern business websites 💻 starting ₹999";
+}
+else if(type==="app"){
+text = "We build Android apps 📱 with latest features";
+}
+else{
+text = "We create AI tools 🤖 chatbot, automation, etc";
+}
+
+document.getElementById("detail").innerText = text;
+}
+
+
+// AI FUNCTION (with backup)
 async function askAI(){
-let q = document.getElementById("q").value;
+let q = document.getElementById("q").value.toLowerCase();
 
 document.getElementById("ans").innerText = "Thinking... 🤔";
 
 try{
-let res = await fetch("https://api.affiliateplus.xyz/api/chatbot?message=" + q + "&botname=ShaktiAI&ownername=Shubham");
+let res = await fetch("https://api.affiliateplus.xyz/api/chatbot?message=" + q);
 let data = await res.json();
 
 document.getElementById("ans").innerText = data.message;
-}catch(e){
-document.getElementById("ans").innerText = "Server busy 😓 try again";
 }
+catch{
+
+// fallback AI (important)
+if(q.includes("hello")){
+document.getElementById("ans").innerText = "Hello bhai 👋";
+}
+else if(q.includes("price")){
+document.getElementById("ans").innerText = "Website ₹999 se start 💰";
+}
+else if(q.includes("app")){
+document.getElementById("ans").innerText = "Android app available 📱";
+}
+else{
+document.getElementById("ans").innerText = "WhatsApp pe contact karo 👍";
+}
+
+}
+
 }
 </script>
 
