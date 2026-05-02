@@ -7,110 +7,89 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI}
 
 body{
 background:linear-gradient(135deg,#020617,#0f172a);
 color:white;
 text-align:center;
-overflow-x:hidden;
 }
 
-/* OM BACKGROUND */
-.om-bg{
+/* OM background */
+.om{
 position:fixed;
-top:50%;
-left:50%;
+top:50%;left:50%;
 transform:translate(-50%,-50%);
 font-size:180px;
 color:rgba(255,255,255,0.03);
 animation:spin 40s linear infinite;
 z-index:0;
 }
-
 @keyframes spin{
 0%{transform:translate(-50%,-50%) rotate(0deg);}
 100%{transform:translate(-50%,-50%) rotate(360deg);}
 }
 
-/* HEADER */
 header{
 padding:20px;
 font-size:24px;
 color:#22c55e;
-z-index:2;
 position:relative;
+z-index:2;
 }
 
-/* HERO */
-.hero{
-padding:60px 20px;
-z-index:2;
-position:relative;
-}
-
-/* SECTION */
 .section{
 padding:40px;
-z-index:2;
 position:relative;
+z-index:2;
 }
 
-/* CARD */
+/* cards */
 .card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
+background:#1e293b;
 margin:12px;
 padding:20px;
-border-radius:15px;
+border-radius:12px;
 cursor:pointer;
 transition:0.3s;
 }
-
 .card:hover{
 transform:scale(1.05);
-background:rgba(255,255,255,0.1);
+background:#334155;
 }
 
-/* DETAILS */
-.detail-box{
+/* detail */
+.detail{
 display:none;
-background:#1e293b;
-padding:20px;
-margin-top:20px;
-border-radius:12px;
+margin-top:15px;
+padding:15px;
+background:#020617;
+border-radius:10px;
 }
 
-/* BUTTON */
+/* button */
 .btn{
-margin-top:15px;
-padding:12px 20px;
+margin-top:10px;
+padding:10px 18px;
 background:#22c55e;
 border:none;
-border-radius:10px;
+border-radius:8px;
 cursor:pointer;
 }
 
-/* WHATSAPP */
+/* whatsapp */
 .whatsapp{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-color:white;
+width:60px;height:60px;
 border-radius:50%;
-width:60px;
-height:60px;
 display:flex;
 align-items:center;
 justify-content:center;
 font-size:28px;
-box-shadow:0 0 15px #25D366;
+color:white;
 z-index:10;
 }
 </style>
@@ -118,46 +97,39 @@ z-index:10;
 
 <body>
 
-<div class="om-bg">ॐ</div>
+<div class="om">ॐ</div>
 
 <header>🚀 Shubham App & Web Tech</header>
 
-<div class="hero">
-<h1>Professional Website & App Services</h1>
-<p>Click below to explore our services 💻</p>
+<div class="section">
+<h2>Our Services</h2>
+
+<div class="card" onclick="show('web')">🌐 Website</div>
+<div id="web" class="detail">
+Modern business websites ₹999+<br>
+<a href="https://wa.me/917488184506"><button class="btn">Contact</button></a>
+</div>
+
+<div class="card" onclick="show('app')">📱 App</div>
+<div id="app" class="detail">
+Android app development ₹1999+<br>
+<a href="https://wa.me/917488184506"><button class="btn">Contact</button></a>
+</div>
+
+<div class="card" onclick="show('ai')">🤖 AI Tools</div>
+<div id="ai" class="detail">
+Chatbot & automation tools<br>
+<a href="https://wa.me/917488184506"><button class="btn">Contact</button></a>
+</div>
+
 </div>
 
 <div class="section">
+<h2>Our Work</h2>
 
-<h2>Our Services</h2>
-
-<div class="card" onclick="openBox('web')">🌐 Website Development</div>
-<div class="card" onclick="openBox('app')">📱 App Development</div>
-<div class="card" onclick="openBox('ai')">🤖 AI Tools</div>
-
-<div id="web" class="detail-box">
-<h3>Website Development</h3>
-<p>Modern responsive website for business starting ₹999</p>
-<a href="https://wa.me/918825208568">
-<button class="btn">Contact</button>
-</a>
-</div>
-
-<div id="app" class="detail-box">
-<h3>App Development</h3>
-<p>Android apps with latest features 📱</p>
-<a href="https://wa.me/918825208568">
-<button class="btn">Contact</button>
-</a>
-</div>
-
-<div id="ai" class="detail-box">
-<h3>AI Tools</h3>
-<p>Chatbot, automation and smart tools 🤖</p>
-<a href="https://wa.me/918825208568">
-<button class="btn">Contact</button>
-</a>
-</div>
+<div class="card">🏨 Hotel Website Demo</div>
+<div class="card">🛒 Shop Website Demo</div>
+<div class="card">📱 App UI Demo</div>
 
 </div>
 
@@ -165,25 +137,20 @@ z-index:10;
 © 2026 Shubham App & Web Tech
 </footer>
 
-<a href="https://wa.me/918825208568" class="whatsapp">
+<a href="https://wa.me/917488184506" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
+function show(id){
+let all=document.querySelectorAll('.detail');
+all.forEach(x=>x.style.display="none");
 
-function openBox(id){
-let boxes=document.querySelectorAll('.detail-box');
+let box=document.getElementById(id);
+box.style.display="block";
 
-boxes.forEach(box=>box.style.display="none");
-
-document.getElementById(id).style.display="block";
-
-window.scrollTo({
-top:document.getElementById(id).offsetTop - 100,
-behavior:"smooth"
-});
+window.scrollTo({top:box.offsetTop-100,behavior:"smooth"});
 }
-
 </script>
 
 </body>
