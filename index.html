@@ -4,92 +4,149 @@
 <title>Shubham App & Web Tech</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+/* BODY */
 body{
-  margin:0;
-  font-family:'Segoe UI';
-  background:linear-gradient(135deg,#020617,#0f172a);
-  color:white;
-  text-align:center;
+background:linear-gradient(135deg,#020617,#0f172a);
+color:white;
+overflow-x:hidden;
+text-align:center;
 }
 
-/* Header */
+/* OM BACKGROUND */
+.om-bg{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:200px;
+color:rgba(255,255,255,0.03);
+animation:rotate 30s linear infinite;
+z-index:0;
+}
+
+@keyframes rotate{
+0%{transform:translate(-50%,-50%) rotate(0deg);}
+100%{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+/* HEADER */
 header{
-  padding:20px;
-  font-size:26px;
-  font-weight:bold;
-  color:#22c55e;
+padding:20px;
+font-size:26px;
+color:#22c55e;
+z-index:2;
+position:relative;
 }
 
-/* Hero */
+/* HERO */
 .hero{
-  padding:60px 20px;
+padding:60px 20px;
+z-index:2;
+position:relative;
 }
 
-/* Button */
+/* BUTTON */
 .btn{
-  padding:15px 25px;
-  background:linear-gradient(45deg,#22c55e,#4ade80);
-  border:none;
-  border-radius:12px;
-  font-size:18px;
-  cursor:pointer;
-  box-shadow:0 0 20px #22c55e;
+padding:15px 30px;
+background:linear-gradient(45deg,#22c55e,#4ade80);
+border:none;
+border-radius:12px;
+font-size:18px;
+cursor:pointer;
+box-shadow:0 0 20px #22c55e;
+transition:0.3s;
 }
 
-/* Cards */
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* SECTION */
 .section{
-  padding:30px;
+padding:40px;
+z-index:2;
+position:relative;
 }
+
+/* CARDS */
 .card{
-  background:#1e293b;
-  margin:12px;
-  padding:20px;
-  border-radius:12px;
-  transition:0.3s;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+margin:12px;
+padding:20px;
+border-radius:15px;
+transition:0.3s;
 }
+
 .card:hover{
-  transform:scale(1.05);
-  background:#334155;
+transform:translateY(-5px);
+background:rgba(255,255,255,0.1);
 }
 
-/* AI */
+/* INPUT */
 input{
-  padding:12px;
-  width:75%;
-  border-radius:10px;
-  border:none;
+padding:12px;
+width:75%;
+border-radius:10px;
+border:none;
 }
 
-/* WhatsApp floating button */
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:white;
-  border-radius:50%;
-  width:60px;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:28px;
-  box-shadow:0 0 15px #25D366;
+/* ANSWER */
+#ans{
+margin-top:20px;
+color:#22c55e;
 }
+
+/* FOOTER */
+footer{
+padding:20px;
+background:#020617;
+margin-top:40px;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+border-radius:50%;
+width:60px;
+height:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+box-shadow:0 0 15px #25D366;
+z-index:10;
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- OM BACKGROUND -->
+<div class="om-bg">ॐ</div>
+
 <header>🚀 Shubham App & Web Tech</header>
 
 <div class="hero">
-<h1>Premium Website & AI Solutions</h1>
-<p>Grow your business with modern tech 💻</p>
+<h1>Premium Web & AI Solutions</h1>
+<p>Build your digital future with us 💻</p>
 </div>
 
 <div class="section">
@@ -102,34 +159,65 @@ input{
 </div>
 
 <div class="section">
+<h2>About Us</h2>
+<p>We create modern websites, apps and AI tools for business growth.</p>
+</div>
+
+<div class="section">
 <h2>🤖 Shakti AI</h2>
 
 <input id="q" placeholder="Ask anything..."><br><br>
-<button class="btn" onclick="askAI()">Ask</button>
+
+<button class="btn" onclick="askAI()">Ask AI</button>
 
 <p id="ans"></p>
+
 </div>
 
-<!-- WhatsApp Floating -->
+<footer>
+© 2026 Shubham App & Web Tech
+</footer>
+
+<!-- WhatsApp -->
 <a href="https://wa.me/918825208568" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
+
+// typing effect
+function typeText(text){
+let i=0;
+let speed=30;
+let ans=document.getElementById("ans");
+ans.innerText="";
+
+function typing(){
+if(i<text.length){
+ans.innerText+=text.charAt(i);
+i++;
+setTimeout(typing,speed);
+}
+}
+typing();
+}
+
+// AI
 async function askAI(){
 let q=document.getElementById("q").value;
 
-document.getElementById("ans").innerText="Thinking... 🤔";
+typeText("Thinking... 🤔");
 
 try{
 let res=await fetch("https://api.affiliateplus.xyz/api/chatbot?message="+encodeURIComponent(q));
 let data=await res.json();
 
-document.getElementById("ans").innerText=data.message;
+typeText(data.message);
 }catch{
-document.getElementById("ans").innerText="Server busy 😓";
+typeText("Server busy 😓 try again");
 }
 }
+
 </script>
 
 </body>
