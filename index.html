@@ -1,148 +1,135 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Shakti AI Ultra</title>
+<title>Shubham App & Web Tech</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-body {
+body{
   margin:0;
-  font-family:Arial;
+  font-family:'Segoe UI';
   background:linear-gradient(135deg,#020617,#0f172a);
   color:white;
   text-align:center;
 }
 
+/* Header */
 header{
   padding:20px;
-  font-size:24px;
+  font-size:26px;
+  font-weight:bold;
   color:#22c55e;
 }
 
-.btn{
-  padding:14px 25px;
-  background:#22c55e;
-  border:none;
-  border-radius:10px;
-  margin:10px;
-  font-size:16px;
+/* Hero */
+.hero{
+  padding:60px 20px;
 }
 
+/* Button */
+.btn{
+  padding:15px 25px;
+  background:linear-gradient(45deg,#22c55e,#4ade80);
+  border:none;
+  border-radius:12px;
+  font-size:18px;
+  cursor:pointer;
+  box-shadow:0 0 20px #22c55e;
+}
+
+/* Cards */
 .section{
   padding:30px;
 }
-
 .card{
   background:#1e293b;
-  margin:10px;
+  margin:12px;
   padding:20px;
-  border-radius:10px;
-  cursor:pointer;
+  border-radius:12px;
+  transition:0.3s;
+}
+.card:hover{
+  transform:scale(1.05);
+  background:#334155;
 }
 
+/* AI */
 input{
-  padding:10px;
-  width:70%;
-  border-radius:8px;
+  padding:12px;
+  width:75%;
+  border-radius:10px;
   border:none;
 }
 
-/* camera */
-video{
-  width:90%;
-  border-radius:10px;
-  margin-top:10px;
+/* WhatsApp floating button */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  border-radius:50%;
+  width:60px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  box-shadow:0 0 15px #25D366;
 }
 </style>
 </head>
 
 <body>
 
-<header>🤖 Shakti AI Ultra</header>
+<header>🚀 Shubham App & Web Tech</header>
 
-<div class="section">
-<h2>🚀 Services</h2>
-
-<div class="card" onclick="show('website')">🌐 Website</div>
-<div class="card" onclick="show('app')">📱 App</div>
-<div class="card" onclick="show('ai')">🤖 AI Tools</div>
-
-<p id="detail"></p>
+<div class="hero">
+<h1>Premium Website & AI Solutions</h1>
+<p>Grow your business with modern tech 💻</p>
 </div>
 
 <div class="section">
-<h2>🤖 AI Chat</h2>
+<h2>Our Services</h2>
+
+<div class="card">🌐 Website Development</div>
+<div class="card">📱 App Development</div>
+<div class="card">🤖 AI Tools</div>
+
+</div>
+
+<div class="section">
+<h2>🤖 Shakti AI</h2>
 
 <input id="q" placeholder="Ask anything..."><br><br>
-
 <button class="btn" onclick="askAI()">Ask</button>
-<button class="btn" onclick="voice()">🎤 Voice</button>
 
 <p id="ans"></p>
 </div>
 
-<div class="section">
-<h2>📷 Camera Scan</h2>
-
-<button class="btn" onclick="startCam()">Open Camera</button>
-<br>
-<video id="cam" autoplay></video>
-
-</div>
-
-<footer>
-📞 WhatsApp: 8825208568
-</footer>
+<!-- WhatsApp Floating -->
+<a href="https://wa.me/918825208568" class="whatsapp">
+<i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
-
-// SERVICE
-function show(type){
-if(type==="website"){
-document.getElementById("detail").innerText="Website ₹999 se";
-}
-else if(type==="app"){
-document.getElementById("detail").innerText="Android app banega";
-}
-else{
-document.getElementById("detail").innerText="AI chatbot + tools";
-}
-}
-
-// AI
 async function askAI(){
-let q=document.getElementById("q").value.toLowerCase();
-document.getElementById("ans").innerText="Thinking...";
+let q=document.getElementById("q").value;
+
+document.getElementById("ans").innerText="Thinking... 🤔";
 
 try{
-let res=await fetch("https://api.affiliateplus.xyz/api/chatbot?message="+q);
+let res=await fetch("https://api.affiliateplus.xyz/api/chatbot?message="+encodeURIComponent(q));
 let data=await res.json();
+
 document.getElementById("ans").innerText=data.message;
-}
-catch{
-if(q.includes("hello")) document.getElementById("ans").innerText="Hello 👋";
-else if(q.includes("price")) document.getElementById("ans").innerText="₹999 start";
-else document.getElementById("ans").innerText="WhatsApp karo";
+}catch{
+document.getElementById("ans").innerText="Server busy 😓";
 }
 }
-
-// VOICE
-function voice(){
-let recognition=new(window.SpeechRecognition||window.webkitSpeechRecognition)();
-recognition.onresult=function(e){
-let text=e.results[0][0].transcript;
-document.getElementById("q").value=text;
-askAI();
-}
-recognition.start();
-}
-
-// CAMERA
-async function startCam(){
-let stream=await navigator.mediaDevices.getUserMedia({video:true});
-document.getElementById("cam").srcObject=stream;
-}
-
 </script>
 
 </body>
