@@ -7,8 +7,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
-/* RESET */
 *{
 margin:0;
 padding:0;
@@ -16,12 +14,11 @@ box-sizing:border-box;
 font-family:'Segoe UI',sans-serif;
 }
 
-/* BODY */
 body{
 background:linear-gradient(135deg,#020617,#0f172a);
 color:white;
-overflow-x:hidden;
 text-align:center;
+overflow-x:hidden;
 }
 
 /* OM BACKGROUND */
@@ -30,13 +27,13 @@ position:fixed;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-font-size:200px;
+font-size:180px;
 color:rgba(255,255,255,0.03);
-animation:rotate 30s linear infinite;
+animation:spin 40s linear infinite;
 z-index:0;
 }
 
-@keyframes rotate{
+@keyframes spin{
 0%{transform:translate(-50%,-50%) rotate(0deg);}
 100%{transform:translate(-50%,-50%) rotate(360deg);}
 }
@@ -44,7 +41,7 @@ z-index:0;
 /* HEADER */
 header{
 padding:20px;
-font-size:26px;
+font-size:24px;
 color:#22c55e;
 z-index:2;
 position:relative;
@@ -57,22 +54,6 @@ z-index:2;
 position:relative;
 }
 
-/* BUTTON */
-.btn{
-padding:15px 30px;
-background:linear-gradient(45deg,#22c55e,#4ade80);
-border:none;
-border-radius:12px;
-font-size:18px;
-cursor:pointer;
-box-shadow:0 0 20px #22c55e;
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
-}
-
 /* SECTION */
 .section{
 padding:40px;
@@ -80,43 +61,42 @@ z-index:2;
 position:relative;
 }
 
-/* CARDS */
+/* CARD */
 .card{
 background:rgba(255,255,255,0.05);
 backdrop-filter:blur(10px);
 margin:12px;
 padding:20px;
 border-radius:15px;
+cursor:pointer;
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:scale(1.05);
 background:rgba(255,255,255,0.1);
 }
 
-/* INPUT */
-input{
-padding:12px;
-width:75%;
-border-radius:10px;
-border:none;
-}
-
-/* ANSWER */
-#ans{
-margin-top:20px;
-color:#22c55e;
-}
-
-/* FOOTER */
-footer{
+/* DETAILS */
+.detail-box{
+display:none;
+background:#1e293b;
 padding:20px;
-background:#020617;
-margin-top:40px;
+margin-top:20px;
+border-radius:12px;
 }
 
-/* WHATSAPP FLOAT */
+/* BUTTON */
+.btn{
+margin-top:15px;
+padding:12px 20px;
+background:#22c55e;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* WHATSAPP */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -133,44 +113,51 @@ font-size:28px;
 box-shadow:0 0 15px #25D366;
 z-index:10;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- OM BACKGROUND -->
 <div class="om-bg">ॐ</div>
 
 <header>🚀 Shubham App & Web Tech</header>
 
 <div class="hero">
-<h1>Premium Web & AI Solutions</h1>
-<p>Build your digital future with us 💻</p>
+<h1>Professional Website & App Services</h1>
+<p>Click below to explore our services 💻</p>
 </div>
 
 <div class="section">
+
 <h2>Our Services</h2>
 
-<div class="card">🌐 Website Development</div>
-<div class="card">📱 App Development</div>
-<div class="card">🤖 AI Tools</div>
+<div class="card" onclick="openBox('web')">🌐 Website Development</div>
+<div class="card" onclick="openBox('app')">📱 App Development</div>
+<div class="card" onclick="openBox('ai')">🤖 AI Tools</div>
 
+<div id="web" class="detail-box">
+<h3>Website Development</h3>
+<p>Modern responsive website for business starting ₹999</p>
+<a href="https://wa.me/918825208568">
+<button class="btn">Contact</button>
+</a>
 </div>
 
-<div class="section">
-<h2>About Us</h2>
-<p>We create modern websites, apps and AI tools for business growth.</p>
+<div id="app" class="detail-box">
+<h3>App Development</h3>
+<p>Android apps with latest features 📱</p>
+<a href="https://wa.me/918825208568">
+<button class="btn">Contact</button>
+</a>
 </div>
 
-<div class="section">
-<h2>🤖 Shakti AI</h2>
-
-<input id="q" placeholder="Ask anything..."><br><br>
-
-<button class="btn" onclick="askAI()">Ask AI</button>
-
-<p id="ans"></p>
+<div id="ai" class="detail-box">
+<h3>AI Tools</h3>
+<p>Chatbot, automation and smart tools 🤖</p>
+<a href="https://wa.me/918825208568">
+<button class="btn">Contact</button>
+</a>
+</div>
 
 </div>
 
@@ -178,44 +165,23 @@ z-index:10;
 © 2026 Shubham App & Web Tech
 </footer>
 
-<!-- WhatsApp -->
 <a href="https://wa.me/918825208568" class="whatsapp">
 <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
 
-// typing effect
-function typeText(text){
-let i=0;
-let speed=30;
-let ans=document.getElementById("ans");
-ans.innerText="";
+function openBox(id){
+let boxes=document.querySelectorAll('.detail-box');
 
-function typing(){
-if(i<text.length){
-ans.innerText+=text.charAt(i);
-i++;
-setTimeout(typing,speed);
-}
-}
-typing();
-}
+boxes.forEach(box=>box.style.display="none");
 
-// AI
-async function askAI(){
-let q=document.getElementById("q").value;
+document.getElementById(id).style.display="block";
 
-typeText("Thinking... 🤔");
-
-try{
-let res=await fetch("https://api.affiliateplus.xyz/api/chatbot?message="+encodeURIComponent(q));
-let data=await res.json();
-
-typeText(data.message);
-}catch{
-typeText("Server busy 😓 try again");
-}
+window.scrollTo({
+top:document.getElementById(id).offsetTop - 100,
+behavior:"smooth"
+});
 }
 
 </script>
