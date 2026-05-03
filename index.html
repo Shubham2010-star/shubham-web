@@ -4,57 +4,81 @@
 <title>Shubham App & Web Tech</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
 <style>
 body{
 margin:0;
 font-family:Arial;
 color:white;
 text-align:center;
+overflow-x:hidden;
 
-/* 🔥 Direct Online AI Background */
-background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
-url('https://images.unsplash.com/photo-1677442135136-760c813a743d');
+/* 🔥 Animated Gradient */
+background: linear-gradient(270deg, #020617, #0f172a, #020617);
+background-size: 600% 600%;
+animation: gradientMove 10s ease infinite;
+}
 
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* particles */
+#particles-js{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
 }
 
 /* Header */
 header{
 padding:40px;
-font-size:28px;
+font-size:32px;
 color:#22c55e;
+text-shadow:0 0 10px #22c55e;
 }
 
 /* Section */
 .section{
-padding:30px;
+padding:40px;
 }
 
-/* Card */
+/* Cards */
 .card{
-background:rgba(255,255,255,0.1);
-margin:10px;
-padding:20px;
-border-radius:12px;
+background:rgba(255,255,255,0.08);
+margin:15px;
+padding:25px;
+border-radius:15px;
 cursor:pointer;
-transition:0.3s;
+transition:0.4s;
+backdrop-filter: blur(10px);
 }
 
 .card:hover{
-transform:scale(1.05);
-background:rgba(255,255,255,0.2);
+transform:scale(1.08);
+box-shadow:0 0 20px #22c55e;
 }
 
 /* Button */
 .btn{
-padding:12px 20px;
+padding:14px 25px;
 background:#25D366;
 border:none;
-border-radius:8px;
+border-radius:10px;
 color:white;
-font-size:16px;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 15px #25D366;
+}
+
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 30px #25D366;
 }
 
 /* WhatsApp */
@@ -63,28 +87,40 @@ position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-width:60px;
-height:60px;
+width:65px;
+height:65px;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:26px;
+font-size:28px;
 color:white;
 text-decoration:none;
+box-shadow:0 0 20px #25D366;
+}
+
+/* fade animation */
+.fade{
+animation:fadeIn 1.5s ease;
+}
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<div id="particles-js"></div>
+
+<header class="fade">
 🤖 Shubham App & Web Tech  
 <br>
 <small>AI Powered Website & App Builder</small>
 </header>
 
-<div class="section">
+<div class="section fade">
 <h2>Our Services</h2>
 
 <div class="card">🌐 Website Development</div>
@@ -93,7 +129,7 @@ text-decoration:none;
 
 </div>
 
-<div class="section">
+<div class="section fade">
 <h2>Contact</h2>
 
 <a href="https://wa.me/917488184506">
@@ -103,6 +139,17 @@ text-decoration:none;
 </div>
 
 <a href="https://wa.me/917488184506" class="whatsapp">💬</a>
+
+<script>
+particlesJS("particles-js", {
+particles: {
+number: { value: 60 },
+size: { value: 3 },
+move: { speed: 2 },
+line_linked: { enable: true },
+},
+});
+</script>
 
 </body>
 </html>
