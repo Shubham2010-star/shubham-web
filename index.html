@@ -4,154 +4,105 @@
 <title>Shubham App & Web Tech</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI}
-
 body{
-background:linear-gradient(135deg,#020617,#0f172a);
+margin:0;
+font-family:Arial;
 color:white;
 text-align:center;
+
+/* 🔥 Direct Online AI Background */
+background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+url('https://images.unsplash.com/photo-1677442135136-760c813a743d');
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
-/* OM background */
-.om{
-position:fixed;
-top:50%;left:50%;
-transform:translate(-50%,-50%);
-font-size:180px;
-color:rgba(255,255,255,0.03);
-animation:spin 40s linear infinite;
-z-index:0;
-}
-@keyframes spin{
-0%{transform:translate(-50%,-50%) rotate(0deg);}
-100%{transform:translate(-50%,-50%) rotate(360deg);}
-}
-
+/* Header */
 header{
-padding:20px;
-font-size:24px;
-color:#22c55e;
-position:relative;
-z-index:2;
-}
-
-.section{
 padding:40px;
-position:relative;
-z-index:2;
+font-size:28px;
+color:#22c55e;
 }
 
-/* cards */
+/* Section */
+.section{
+padding:30px;
+}
+
+/* Card */
 .card{
-background:#1e293b;
-margin:12px;
+background:rgba(255,255,255,0.1);
+margin:10px;
 padding:20px;
 border-radius:12px;
 cursor:pointer;
 transition:0.3s;
 }
+
 .card:hover{
 transform:scale(1.05);
-background:#334155;
+background:rgba(255,255,255,0.2);
 }
 
-/* detail */
-.detail{
-display:none;
-margin-top:15px;
-padding:15px;
-background:#020617;
-border-radius:10px;
-}
-
-/* button */
+/* Button */
 .btn{
-margin-top:10px;
-padding:10px 18px;
-background:#22c55e;
+padding:12px 20px;
+background:#25D366;
 border:none;
 border-radius:8px;
-cursor:pointer;
+color:white;
+font-size:16px;
 }
 
-/* whatsapp */
+/* WhatsApp */
 .whatsapp{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-width:60px;height:60px;
+width:60px;
+height:60px;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:28px;
+font-size:26px;
 color:white;
-z-index:10;
+text-decoration:none;
 }
 </style>
 </head>
 
 <body>
 
-<div class="om">ॐ</div>
-
-<header>🚀 Shubham App & Web Tech</header>
+<header>
+🤖 Shubham App & Web Tech  
+<br>
+<small>AI Powered Website & App Builder</small>
+</header>
 
 <div class="section">
 <h2>Our Services</h2>
 
-<div class="card" onclick="show('web')">🌐 Website</div>
-<div id="web" class="detail">
-Modern business websites ₹999+<br>
-<a href="https://wa.me/917488184506"><button class="btn">Contact</button></a>
-</div>
-
-<div class="card" onclick="show('app')">📱 App</div>
-<div id="app" class="detail">
-Android app development ₹1999+<br>
-<a href="https://wa.me/917488184506"><button class="btn">Contact</button></a>
-</div>
-
-<div class="card" onclick="show('ai')">🤖 AI Tools</div>
-<div id="ai" class="detail">
-Chatbot & automation tools<br>
-<a href="https://wa.me/917488184506"><button class="btn">Contact</button></a>
-</div>
+<div class="card">🌐 Website Development</div>
+<div class="card">📱 App Development</div>
+<div class="card">🤖 AI Tools</div>
 
 </div>
 
 <div class="section">
-<h2>Our Work</h2>
+<h2>Contact</h2>
 
-<div class="card">🏨 Hotel Website Demo</div>
-<div class="card">🛒 Shop Website Demo</div>
-<div class="card">📱 App UI Demo</div>
+<a href="https://wa.me/917488184506">
+<button class="btn">Contact on WhatsApp</button>
+</a>
 
 </div>
 
-<footer>
-© 2026 Shubham App & Web Tech
-</footer>
-
-<a href="https://wa.me/917488184506" class="whatsapp">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-<script>
-function show(id){
-let all=document.querySelectorAll('.detail');
-all.forEach(x=>x.style.display="none");
-
-let box=document.getElementById(id);
-box.style.display="block";
-
-window.scrollTo({top:box.offsetTop-100,behavior:"smooth"});
-}
-</script>
+<a href="https://wa.me/917488184506" class="whatsapp">💬</a>
 
 </body>
 </html>
