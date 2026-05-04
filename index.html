@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shubham App & Web Tech</title>
 
-<!-- PWA -->
+<!-- ✅ PWA -->
 <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#22c55e">
 
 <style>
 :root{
@@ -52,13 +53,13 @@ font-size:32px;
 color:var(--accent);
 }
 
-/* SECTIONS */
+/* SECTION */
 .section{
 padding:40px 20px;
 text-align:center;
 }
 
-/* CARDS */
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -66,6 +67,7 @@ gap:15px;
 margin-top:20px;
 }
 
+/* CARD */
 .card{
 background:var(--card);
 padding:20px;
@@ -147,7 +149,9 @@ text-decoration:none;
 <div class="hero">
 <h1>Build Premium Websites & Apps</h1>
 <p>Modern design • Fast delivery • Affordable</p>
-<a href="https://wa.me/917488184506"><button class="btn">Start Project</button></a>
+<a href="https://wa.me/917488184506">
+<button class="btn">Start Project</button>
+</a>
 </div>
 
 <!-- SERVICES -->
@@ -200,6 +204,17 @@ text-decoration:none;
 </footer>
 
 <a href="https://wa.me/917488184506" class="whatsapp">💬</a>
+
+<!-- ✅ Service Worker Register -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js')
+    .then(() => console.log("Service Worker Registered"))
+    .catch(err => console.log("SW Error", err));
+  });
+}
+</script>
 
 </body>
 </html>
