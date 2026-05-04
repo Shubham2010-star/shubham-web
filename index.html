@@ -126,6 +126,20 @@ color:white;
 text-decoration:none;
 }
 
+/* INSTALL BUTTON */
+#installBtn{
+position:fixed;
+bottom:90px;
+right:20px;
+padding:12px;
+background:#22c55e;
+border:none;
+border-radius:10px;
+display:none;
+z-index:1000;
+color:black;
+}
+
 /* MOBILE */
 @media(max-width:600px){
 .hero h1{font-size:24px}
@@ -205,6 +219,9 @@ text-decoration:none;
 
 <a href="https://wa.me/917488184506" class="whatsapp">💬</a>
 
+<!-- 🔥 INSTALL BUTTON -->
+<button id="installBtn">Install App</button>
+
 <!-- ✅ Service Worker Register -->
 <script>
 if ('serviceWorker' in navigator) {
@@ -214,6 +231,24 @@ if ('serviceWorker' in navigator) {
     .catch(err => console.log("SW Error", err));
   });
 }
+
+/* INSTALL PROMPT */
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById("installBtn").style.display = "block";
+});
+
+document.getElementById("installBtn").onclick = () => {
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      document.getElementById("installBtn").style.display = "none";
+    });
+  }
+};
 </script>
 
 </body>
