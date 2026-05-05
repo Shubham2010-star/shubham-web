@@ -10,10 +10,9 @@ body{
 margin:0;
 font-family:Arial;
 color:white;
-background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#3b8df2);
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#3b8df2);
 background-size:400% 400%;
 animation:bgMove 10s infinite;
-scroll-behavior:smooth;
 }
 
 @keyframes bgMove{
@@ -22,46 +21,35 @@ scroll-behavior:smooth;
 100%{background-position:0% 50%;}
 }
 
-/* NAV */
 nav{
 position:fixed;
 top:0;
 width:100%;
-background:#00000080;
+background:#00000090;
 padding:15px;
 display:flex;
 justify-content:space-between;
 z-index:100;
 }
 
-nav a{
-color:white;
-margin:0 10px;
-text-decoration:none;
-}
-
-/* HERO */
 .hero{
 padding:120px 20px;
 text-align:center;
 }
 
 .hero h1{
-font-size:32px;
 color:#22c55e;
 }
 
-/* SECTION */
 .section{
 padding:40px 20px;
 text-align:center;
 }
 
-/* CARDS */
 .card{
 background:rgba(0,0,0,0.6);
-margin:10px;
-padding:20px;
+margin:15px;
+padding:25px;
 border-radius:12px;
 cursor:pointer;
 transition:0.3s;
@@ -72,7 +60,6 @@ transform:scale(1.05);
 background:rgba(0,0,0,0.8);
 }
 
-/* BUTTON */
 .btn{
 padding:12px 20px;
 background:#25D366;
@@ -81,41 +68,30 @@ border-radius:8px;
 color:white;
 font-size:16px;
 cursor:pointer;
-margin-top:10px;
 }
 
-/* SOCIAL */
-ul{
-list-style:none;
+/* FORM */
+.form{
 display:flex;
-justify-content:center;
-padding:0;
+flex-direction:column;
+gap:10px;
+max-width:300px;
+margin:auto;
 }
 
-.icon{
-margin:10px;
+input{
+padding:10px;
+border-radius:8px;
+border:none;
 }
 
-.icon a{
-text-decoration:none;
-color:white;
-font-size:18px;
-}
-
-/* FOOTER */
-footer{
-padding:20px;
-text-align:center;
-}
-
-/* WHATSAPP FLOAT */
+/* FLOAT */
 .whatsapp{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-width:60px;
-height:60px;
+width:60px;height:60px;
 border-radius:50%;
 display:flex;
 align-items:center;
@@ -129,67 +105,63 @@ text-decoration:none;
 
 <body>
 
-<!-- NAV -->
 <nav>
 <div>🚀 Shubham Tech</div>
-<div>
-<a href="#services">Services</a>
-<a href="#contact">Contact</a>
-</div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-<h1>Build Websites & Apps</h1>
-<p>Professional solutions for your business</p>
-
-<a href="https://wa.me/917488184506" target="_blank">
-<button class="btn">Contact on WhatsApp</button>
-</a>
+<h1>Build Your Website & App</h1>
+<p>Fast • Professional • Affordable</p>
+<button class="btn" onclick="orderNow()">Start Project</button>
 </div>
 
-<!-- SERVICES -->
-<div id="services" class="section">
+<div class="section">
 <h2>Our Services</h2>
 
-<div class="card" onclick="openService('Website Development')">🌐 Website Development</div>
-<div class="card" onclick="openService('App Development')">📱 App Development</div>
-<div class="card" onclick="openService('AI Tools')">🤖 AI Tools</div>
+<div class="card" onclick="sendWhatsApp('Website Development')">🌐 Website Development</div>
+<div class="card" onclick="sendWhatsApp('App Development')">📱 App Development</div>
+<div class="card" onclick="sendWhatsApp('AI Tools')">🤖 AI Tools</div>
 
 </div>
 
-<!-- CONTACT -->
-<div id="contact" class="section">
-<h2>Contact Us</h2>
+<!-- CLIENT FORM -->
+<div class="section">
+<h2>Start Your Project</h2>
 
-<a href="https://wa.me/917488184506" target="_blank">
-<button class="btn">Chat on WhatsApp</button>
-</a>
+<div class="form">
+<input id="name" placeholder="Your Name">
+<input id="work" placeholder="Project Type">
+<button class="btn" onclick="submitForm()">Send Request</button>
+</div>
 
 </div>
 
-<!-- SOCIAL -->
 <div class="section">
 <h2>Follow Us</h2>
-
-<ul>
-<li class="icon">
-<a href="https://www.instagram.com/shaktiai2.o?igsh=dHBuYXA2dDJ1NmYx" target="_blank">📸 Instagram</a>
-</li>
-</ul>
-
+<a href="https://www.instagram.com/shaktiai2.o?igsh=dHBuYXA2dDJ1NmYx" target="_blank">
+<button class="btn">Instagram</button>
+</a>
 </div>
 
-<footer>
-© 2026 Shubham App & Web Tech
-</footer>
-
-<!-- FLOAT BUTTON -->
 <a href="https://wa.me/917488184506" class="whatsapp">💬</a>
 
 <script>
-function openService(service){
-  alert(service + " selected ✔️\nContact on WhatsApp for details.");
+function sendWhatsApp(service){
+let msg = "Hello, I want " + service;
+window.open("https://wa.me/917488184506?text=" + encodeURIComponent(msg));
+}
+
+function orderNow(){
+let msg = "Hello, I want to start a project";
+window.open("https://wa.me/917488184506?text=" + encodeURIComponent(msg));
+}
+
+function submitForm(){
+let name = document.getElementById("name").value;
+let work = document.getElementById("work").value;
+
+let msg = "Name: " + name + " | Project: " + work;
+window.open("https://wa.me/917488184506?text=" + encodeURIComponent(msg));
 }
 </script>
 
