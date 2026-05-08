@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shubham Kumar | Developer</title>
+  <title>Shubham Kumar | Full Stack Developer</title>
 
   <!-- FONT AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
@@ -12,11 +12,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
       font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
     }
 
     body{
@@ -25,7 +27,8 @@
       overflow-x:hidden;
     }
 
-    /* BACKGROUND */
+    /* BACKGROUND ANIMATION */
+
     .bg-animation{
       position:fixed;
       width:100%;
@@ -53,6 +56,7 @@
     }
 
     /* NAVBAR */
+
     nav{
       width:100%;
       padding:20px 8%;
@@ -61,14 +65,15 @@
       align-items:center;
       position:fixed;
       top:0;
-      background:rgba(0,0,0,0.3);
-      backdrop-filter:blur(10px);
       z-index:999;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(10px);
     }
 
     nav h2{
       color:#00ffff;
       font-size:28px;
+      font-weight:700;
     }
 
     nav ul{
@@ -81,6 +86,7 @@
       text-decoration:none;
       color:white;
       transition:0.3s;
+      font-weight:500;
     }
 
     nav ul li a:hover{
@@ -88,6 +94,7 @@
     }
 
     /* HERO */
+
     .hero{
       min-height:100vh;
       display:flex;
@@ -108,68 +115,77 @@
 
     .hero h1 span{
       color:#00ffff;
+      text-shadow:0 0 15px #00ffff;
     }
 
     .typing{
-      font-size:28px;
+      font-size:30px;
       color:#00ffff;
-      margin-bottom:20px;
+      margin-bottom:25px;
+      min-height:40px;
     }
 
     .hero p{
-      line-height:1.8;
+      line-height:1.9;
       color:#cfcfcf;
-      margin-bottom:35px;
+      margin-bottom:40px;
+      font-size:18px;
     }
 
     .btn{
       display:inline-block;
       padding:14px 35px;
+      border-radius:40px;
       background:#00ffff;
       color:black;
-      border-radius:40px;
       text-decoration:none;
       font-weight:600;
+      margin:10px;
       transition:0.3s;
     }
 
     .btn:hover{
       transform:scale(1.1);
-      box-shadow:0 0 20px #00ffff;
+      box-shadow:0 0 25px #00ffff;
     }
 
     /* SECTION */
+
     section{
       padding:100px 8%;
     }
 
     .section-title{
       text-align:center;
-      margin-bottom:60px;
-      font-size:40px;
+      font-size:42px;
       color:#00ffff;
+      margin-bottom:60px;
     }
 
     /* ABOUT */
+
     .about{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:40px;
+      gap:50px;
       align-items:center;
     }
 
     .about img{
       width:100%;
-      border-radius:20px;
+      border-radius:25px;
       border:2px solid #00ffff;
+      box-shadow:0 0 20px rgba(0,255,255,0.3);
     }
 
     .about-text{
-      line-height:1.8;
-      color:#d5d5d5;
+      line-height:1.9;
+      color:#d4d4d4;
+      font-size:17px;
     }
 
     /* SKILLS */
+
     .skills-container{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -178,15 +194,16 @@
 
     .skill{
       background:#0d1329;
-      padding:25px;
+      padding:30px;
       border-radius:20px;
-      border:1px solid rgba(255,255,255,0.1);
       transition:0.3s;
+      border:1px solid rgba(255,255,255,0.1);
     }
 
     .skill:hover{
       transform:translateY(-10px);
       border-color:#00ffff;
+      box-shadow:0 0 20px rgba(0,255,255,0.2);
     }
 
     .skill i{
@@ -195,13 +212,16 @@
       margin-bottom:15px;
     }
 
+    .skill h3{
+      margin-bottom:12px;
+    }
+
     .bar{
       width:100%;
       height:10px;
-      background:#1f2947;
+      background:#1b2340;
       border-radius:20px;
       overflow:hidden;
-      margin-top:10px;
     }
 
     .bar span{
@@ -211,6 +231,7 @@
     }
 
     /* PROJECTS */
+
     .projects{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
@@ -228,6 +249,7 @@
     .project-card:hover{
       transform:translateY(-10px);
       box-shadow:0 0 20px rgba(0,255,255,0.3);
+      border-color:#00ffff;
     }
 
     .project-card h3{
@@ -236,23 +258,25 @@
     }
 
     .project-card p{
-      color:#d3d3d3;
-      line-height:1.7;
+      line-height:1.8;
+      color:#d4d4d4;
     }
 
     /* TERMINAL */
+
     .terminal{
       background:black;
-      padding:25px;
+      padding:30px;
       border-radius:20px;
-      font-family:monospace;
       color:#00ff66;
-      line-height:1.8;
-      overflow:auto;
+      font-family:monospace;
+      line-height:1.9;
       border:1px solid #00ffff;
+      overflow:auto;
     }
 
     /* CONTACT */
+
     .contact{
       text-align:center;
     }
@@ -262,19 +286,20 @@
       display:flex;
       justify-content:center;
       gap:25px;
+      flex-wrap:wrap;
     }
 
     .socials a{
-      width:55px;
-      height:55px;
+      width:60px;
+      height:60px;
       border-radius:50%;
+      background:#0d1329;
       display:flex;
       align-items:center;
       justify-content:center;
-      background:#0d1329;
       color:#00ffff;
-      font-size:22px;
       text-decoration:none;
+      font-size:25px;
       transition:0.3s;
     }
 
@@ -283,27 +308,52 @@
       box-shadow:0 0 20px #00ffff;
     }
 
+    /* WHATSAPP FLOAT */
+
+    .whatsapp-float{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      z-index:9999;
+    }
+
+    .whatsapp-float a{
+      width:70px;
+      height:70px;
+      background:#25d366;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      font-size:38px;
+      text-decoration:none;
+      box-shadow:0 0 25px rgba(37,211,102,0.7);
+      animation:pulse 2s infinite;
+    }
+
+    @keyframes pulse{
+      0%{
+        transform:scale(1);
+      }
+      50%{
+        transform:scale(1.08);
+      }
+      100%{
+        transform:scale(1);
+      }
+    }
+
     footer{
-      text-align:center;
       padding:25px;
-      border-top:1px solid rgba(255,255,255,0.1);
+      text-align:center;
       color:#999;
+      border-top:1px solid rgba(255,255,255,0.1);
     }
 
     /* RESPONSIVE */
+
     @media(max-width:900px){
-
-      .hero h1{
-        font-size:42px;
-      }
-
-      .typing{
-        font-size:20px;
-      }
-
-      .about{
-        grid-template-columns:1fr;
-      }
 
       nav{
         flex-direction:column;
@@ -314,17 +364,34 @@
         flex-wrap:wrap;
         justify-content:center;
       }
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .typing{
+        font-size:22px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
     }
+
   </style>
 </head>
 
 <body>
 
   <!-- BACKGROUND -->
+
   <div class="bg-animation" id="bg"></div>
 
   <!-- NAVBAR -->
+
   <nav>
+
     <h2>Shubham Dev</h2>
 
     <ul>
@@ -334,9 +401,11 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+
   </nav>
 
   <!-- HERO -->
+
   <section class="hero">
 
     <div class="hero-content">
@@ -346,18 +415,23 @@
       <div class="typing" id="typing"></div>
 
       <p>
-        Passionate Full Stack Web Developer creating futuristic websites,
-        cyber dashboards, AI projects and premium user experiences using
+        Passionate Full Stack Developer creating futuristic cyber-style websites,
+        AI systems, animated dashboards and premium web experiences using
         HTML, CSS, JavaScript, C++ and Java.
       </p>
 
       <a href="#projects" class="btn">View Projects</a>
+
+      <a href="https://wa.me/919109229366" target="_blank" class="btn">
+        WhatsApp Me
+      </a>
 
     </div>
 
   </section>
 
   <!-- ABOUT -->
+
   <section id="about">
 
     <h2 class="section-title">About Me</h2>
@@ -369,22 +443,22 @@
       <div class="about-text">
 
         <p>
-          I am a creative developer focused on building modern, animated,
-          cyber-style websites and AI based systems.
+          I am a creative developer focused on building futuristic websites,
+          cyber dashboards, AI systems and modern user experiences.
         </p>
 
         <br>
 
         <p>
           I work with frontend technologies and continuously learn advanced
-          development, UI design, automation and futuristic web systems.
+          development, UI design and automation systems.
         </p>
 
         <br>
 
         <p>
-          My goal is to build premium level digital experiences and powerful
-          online projects.
+          My goal is to build premium level digital products and futuristic
+          online experiences.
         </p>
 
       </div>
@@ -394,6 +468,7 @@
   </section>
 
   <!-- SKILLS -->
+
   <section id="skills">
 
     <h2 class="section-title">Skills</h2>
@@ -435,6 +510,7 @@
   </section>
 
   <!-- PROJECTS -->
+
   <section id="projects">
 
     <h2 class="section-title">Projects</h2>
@@ -444,28 +520,28 @@
       <div class="project-card">
         <h3>AI Assistant</h3>
         <p>
-          Advanced AI powered assistant with modern UI and smart features.
+          Smart AI assistant with futuristic interface and automation system.
         </p>
       </div>
 
       <div class="project-card">
         <h3>Cyber Dashboard</h3>
         <p>
-          Hacker style futuristic dashboard with animations and live systems.
-        </p>
-      </div>
-
-      <div class="project-card">
-        <h3>Shop Website</h3>
-        <p>
-          Modern online store website with responsive premium design.
+          Advanced cyberpunk style monitoring dashboard with animated UI.
         </p>
       </div>
 
       <div class="project-card">
         <h3>Radar System</h3>
         <p>
-          Experimental scanning system interface with animated tracking UI.
+          Experimental scanning interface with futuristic tracking animation.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Shop Website</h3>
+        <p>
+          Modern responsive business website with premium visual experience.
         </p>
       </div>
 
@@ -474,11 +550,13 @@
   </section>
 
   <!-- TERMINAL -->
+
   <section>
 
     <h2 class="section-title">Developer Console</h2>
 
     <div class="terminal">
+
       > Initializing System... <br>
       > Loading Portfolio... <br>
       > HTML Loaded ✔ <br>
@@ -486,28 +564,30 @@
       > JavaScript Loaded ✔ <br>
       > C++ Modules Active ✔ <br>
       > Java Environment Active ✔ <br>
-      > Access Granted... <br>
-      > Welcome Developer 🚀
+      > Security Layer Active ✔ <br>
+      > Access Granted 🚀
+
     </div>
 
   </section>
 
   <!-- CONTACT -->
+
   <section id="contact" class="contact">
 
-    <h2 class="section-title">Contact</h2>
+    <h2 class="section-title">Contact Me</h2>
 
     <p>
-      Let's build futuristic projects together.
+      Connect with me for futuristic web projects and development.
     </p>
 
     <div class="socials">
 
-      <a href="https://github.com/" target="_blank">
+      <a href="https://github.com/shubham-01-star" target="_blank">
         <i class="fa-brands fa-github"></i>
       </a>
 
-      <a href="https://linkedin.com/" target="_blank">
+      <a href="https://www.linkedin.com/" target="_blank">
         <i class="fa-brands fa-linkedin"></i>
       </a>
 
@@ -519,16 +599,32 @@
         <i class="fa-brands fa-instagram"></i>
       </a>
 
+      <a href="https://wa.me/919109229366" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
     </div>
 
   </section>
 
+  <!-- WHATSAPP FLOAT BUTTON -->
+
+  <div class="whatsapp-float">
+
+    <a href="https://wa.me/919109229366" target="_blank">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+  </div>
+
   <!-- FOOTER -->
+
   <footer>
-    © 2026 Shubham Kumar | All Rights Reserved
+    © 2026 Shubham Kumar | Full Stack Developer
   </footer>
 
   <!-- JAVASCRIPT -->
+
   <script>
 
     // TYPING EFFECT
@@ -537,7 +633,8 @@
       "Full Stack Developer",
       "Cyber UI Designer",
       "AI Projects Creator",
-      "Frontend Developer"
+      "Frontend Developer",
+      "Creative Programmer"
     ];
 
     let count = 0;
@@ -552,55 +649,65 @@
       }
 
       currentText = text[count];
+
       letter = currentText.slice(0, ++index);
 
       document.getElementById("typing").textContent = letter;
 
       if(letter.length === currentText.length){
+
         count++;
         index = 0;
-        setTimeout(type, 1200);
+
+        setTimeout(type, 1500);
+
       }else{
+
         setTimeout(type, 120);
+
       }
 
     })();
-
 
     // BACKGROUND CODE ANIMATION
 
     const bg = document.getElementById("bg");
 
     const codes = [
+
       "C++",
       "Java",
       "HTML",
       "CSS",
       "JavaScript",
-      "System.out.println();",
-      "#include<iostream>",
-      "<div>",
-      "function()",
       "Developer",
+      "#include<iostream>",
+      "System.out.println();",
+      "<div>",
+      "Portfolio",
       "AI System",
-      "Portfolio"
+      "Cyber UI",
+      "Frontend",
+      "function()"
+
     ];
 
-    for(let i=0;i<80;i++){
+    for(let i = 0; i < 90; i++){
 
       const span = document.createElement("span");
 
-      span.innerText = codes[Math.floor(Math.random()*codes.length)];
+      span.innerText = codes[Math.floor(Math.random() * codes.length)];
 
-      span.style.left = Math.random()*100 + "%";
+      span.style.left = Math.random() * 100 + "%";
 
       span.style.animationDuration =
-      (Math.random()*10 + 10) + "s";
+      (Math.random() * 10 + 10) + "s";
 
       span.style.fontSize =
-      (Math.random()*18 + 12) + "px";
+      (Math.random() * 18 + 12) + "px";
 
       bg.appendChild(span);
+
     }
 
   </script>
