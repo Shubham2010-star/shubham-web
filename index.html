@@ -1,523 +1,609 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shubham Kumar | Developer</title>
 
-<title>Shubham App & Web Tech</title>
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#22c55e">
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
 
-:root{
---bg:#020617;
---card:#0f172a;
---accent:#22c55e;
---text:#e2e8f0;
-}
+    body{
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+    /* BACKGROUND */
+    .bg-animation{
+      position:fixed;
+      width:100%;
+      height:100%;
+      z-index:-1;
+      overflow:hidden;
+    }
 
-body{
-background:linear-gradient(-45deg,#020617,#0f172a,#1e293b,#0f172a);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
-color:var(--text);
-scroll-behavior:smooth;
-}
+    .bg-animation span{
+      position:absolute;
+      display:block;
+      color:rgba(0,255,255,0.08);
+      font-size:14px;
+      animation:move 15s linear infinite;
+      white-space:nowrap;
+    }
 
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
+    @keyframes move{
+      0%{
+        transform:translateY(100vh);
+      }
+      100%{
+        transform:translateY(-120vh);
+      }
+    }
 
-/* NAVBAR */
-nav{
-position:fixed;
-top:0;
-width:100%;
-padding:15px 20px;
-background:#00000090;
-backdrop-filter:blur(10px);
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-}
+    /* NAVBAR */
+    nav{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      background:rgba(0,0,0,0.3);
+      backdrop-filter:blur(10px);
+      z-index:999;
+    }
 
-nav h2{
-color:var(--accent);
-font-size:22px;
-}
+    nav h2{
+      color:#00ffff;
+      font-size:28px;
+    }
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:15px;
-font-size:15px;
-}
+    nav ul{
+      display:flex;
+      gap:25px;
+      list-style:none;
+    }
 
-/* HERO */
-.hero{
-padding:130px 20px 80px;
-text-align:center;
-}
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+    }
 
-.hero h1{
-font-size:38px;
-color:var(--accent);
-margin-bottom:15px;
-}
+    nav ul li a:hover{
+      color:#00ffff;
+    }
 
-.hero p{
-font-size:18px;
-opacity:0.9;
-margin-bottom:25px;
-}
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:120px 20px;
+    }
 
-/* BUTTON */
-.btn{
-padding:12px 22px;
-border:none;
-border-radius:10px;
-background:var(--accent);
-color:black;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-margin:5px;
-}
+    .hero-content{
+      max-width:900px;
+    }
 
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px #22c55e88;
-}
+    .hero h1{
+      font-size:65px;
+      margin-bottom:20px;
+    }
 
-/* SECTION */
-.section{
-padding:70px 20px;
-text-align:center;
-}
+    .hero h1 span{
+      color:#00ffff;
+    }
 
-.section h2{
-font-size:30px;
-margin-bottom:30px;
-color:var(--accent);
-}
+    .typing{
+      font-size:28px;
+      color:#00ffff;
+      margin-bottom:20px;
+    }
 
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+    .hero p{
+      line-height:1.8;
+      color:#cfcfcf;
+      margin-bottom:35px;
+    }
 
-/* CARD */
-.card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-padding:25px;
-border-radius:15px;
-transition:0.3s;
-}
+    .btn{
+      display:inline-block;
+      padding:14px 35px;
+      background:#00ffff;
+      color:black;
+      border-radius:40px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
 
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 20px rgba(34,197,94,0.4);
-}
+    .btn:hover{
+      transform:scale(1.1);
+      box-shadow:0 0 20px #00ffff;
+    }
 
-.card img{
-width:100%;
-border-radius:10px;
-margin-bottom:15px;
-}
+    /* SECTION */
+    section{
+      padding:100px 8%;
+    }
 
-/* FORM */
-.form{
-max-width:400px;
-margin:auto;
-display:flex;
-flex-direction:column;
-gap:12px;
-}
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+      font-size:40px;
+      color:#00ffff;
+    }
 
-.form input,
-.form textarea{
-padding:12px;
-border:none;
-border-radius:10px;
-outline:none;
-}
+    /* ABOUT */
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+      align-items:center;
+    }
 
-/* TESTIMONIAL */
-.testimonial{
-background:rgba(255,255,255,0.05);
-padding:20px;
-border-radius:12px;
-margin:10px;
-}
+    .about img{
+      width:100%;
+      border-radius:20px;
+      border:2px solid #00ffff;
+    }
 
-/* SOCIAL */
-.social{
-margin-top:20px;
-}
+    .about-text{
+      line-height:1.8;
+      color:#d5d5d5;
+    }
 
-.social a{
-text-decoration:none;
-margin:10px;
-font-size:18px;
-color:white;
-}
+    /* SKILLS */
+    .skills-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
 
-/* FOOTER */
-footer{
-padding:20px;
-text-align:center;
-background:#00000080;
-margin-top:50px;
-}
+    .skill{
+      background:#0d1329;
+      padding:25px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.1);
+      transition:0.3s;
+    }
 
-/* FLOAT WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-width:65px;
-height:65px;
-border-radius:50%;
-background:#25D366;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:30px;
-color:white;
-text-decoration:none;
-box-shadow:0 0 20px #25D366;
-z-index:999;
-}
+    .skill:hover{
+      transform:translateY(-10px);
+      border-color:#00ffff;
+    }
 
-/* INSTALL BUTTON */
-#installBtn{
-position:fixed;
-bottom:100px;
-right:20px;
-padding:12px 18px;
-border:none;
-border-radius:10px;
-background:var(--accent);
-font-weight:bold;
-display:none;
-z-index:999;
-}
+    .skill i{
+      font-size:45px;
+      color:#00ffff;
+      margin-bottom:15px;
+    }
 
-/* MOBILE */
-@media(max-width:600px){
+    .bar{
+      width:100%;
+      height:10px;
+      background:#1f2947;
+      border-radius:20px;
+      overflow:hidden;
+      margin-top:10px;
+    }
 
-.hero h1{
-font-size:28px;
-}
+    .bar span{
+      display:block;
+      height:100%;
+      background:#00ffff;
+    }
 
-nav{
-flex-direction:column;
-}
+    /* PROJECTS */
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+    }
 
-}
+    .project-card{
+      background:#0d1329;
+      padding:30px;
+      border-radius:20px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.1);
+    }
 
-</style>
+    .project-card:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 20px rgba(0,255,255,0.3);
+    }
+
+    .project-card h3{
+      color:#00ffff;
+      margin-bottom:15px;
+    }
+
+    .project-card p{
+      color:#d3d3d3;
+      line-height:1.7;
+    }
+
+    /* TERMINAL */
+    .terminal{
+      background:black;
+      padding:25px;
+      border-radius:20px;
+      font-family:monospace;
+      color:#00ff66;
+      line-height:1.8;
+      overflow:auto;
+      border:1px solid #00ffff;
+    }
+
+    /* CONTACT */
+    .contact{
+      text-align:center;
+    }
+
+    .socials{
+      margin-top:30px;
+      display:flex;
+      justify-content:center;
+      gap:25px;
+    }
+
+    .socials a{
+      width:55px;
+      height:55px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#0d1329;
+      color:#00ffff;
+      font-size:22px;
+      text-decoration:none;
+      transition:0.3s;
+    }
+
+    .socials a:hover{
+      transform:scale(1.15);
+      box-shadow:0 0 20px #00ffff;
+    }
+
+    footer{
+      text-align:center;
+      padding:25px;
+      border-top:1px solid rgba(255,255,255,0.1);
+      color:#999;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:42px;
+      }
+
+      .typing{
+        font-size:20px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
+  <!-- BACKGROUND -->
+  <div class="bg-animation" id="bg"></div>
 
-<h2>🚀 Shubham Tech</h2>
+  <!-- NAVBAR -->
+  <nav>
+    <h2>Shubham Dev</h2>
 
-<div>
-<a href="#services">Services</a>
-<a href="#work">Work</a>
-<a href="#contact">Contact</a>
-</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-</nav>
+  <!-- HERO -->
+  <section class="hero">
 
-<!-- HERO -->
-<section class="hero">
+    <div class="hero-content">
 
-<h1>Build Premium Websites & Apps</h1>
+      <h1>Hello, I'm <span>Shubham Kumar</span></h1>
 
-<p>
-Modern • Fast • Professional • Affordable
-</p>
+      <div class="typing" id="typing"></div>
 
-<button class="btn"
-onclick="sendWhatsApp('Hello, I want to start a project')">
-Start Project
-</button>
+      <p>
+        Passionate Full Stack Web Developer creating futuristic websites,
+        cyber dashboards, AI projects and premium user experiences using
+        HTML, CSS, JavaScript, C++ and Java.
+      </p>
 
-<button class="btn"
-onclick="sendWhatsApp('Send me pricing details')">
-Pricing
-</button>
+      <a href="#projects" class="btn">View Projects</a>
 
-</section>
+    </div>
 
-<!-- SERVICES -->
-<section id="services" class="section">
+  </section>
 
-<h2>Our Services</h2>
+  <!-- ABOUT -->
+  <section id="about">
 
-<div class="grid">
+    <h2 class="section-title">About Me</h2>
 
-<div class="card">
-<h3>🌐 Website Development</h3>
-<p>Business, Shop, Hotel & Portfolio Websites</p>
+    <div class="about">
 
-<button class="btn"
-onclick="sendWhatsApp('I want Website Development')">
-Get Website
-</button>
-</div>
+      <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop" alt="developer">
 
-<div class="card">
-<h3>📱 App Development</h3>
-<p>Android App & Website to App Conversion</p>
+      <div class="about-text">
 
-<button class="btn"
-onclick="sendWhatsApp('I want App Development')">
-Get App
-</button>
-</div>
+        <p>
+          I am a creative developer focused on building modern, animated,
+          cyber-style websites and AI based systems.
+        </p>
 
-<div class="card">
-<h3>🤖 AI Tools</h3>
-<p>Automation, AI Support & Smart Solutions</p>
+        <br>
 
-<button class="btn"
-onclick="sendWhatsApp('I want AI Tools')">
-AI Support
-</button>
-</div>
+        <p>
+          I work with frontend technologies and continuously learn advanced
+          development, UI design, automation and futuristic web systems.
+        </p>
 
-</div>
+        <br>
 
-</section>
+        <p>
+          My goal is to build premium level digital experiences and powerful
+          online projects.
+        </p>
 
-<!-- WORK -->
-<section id="work" class="section">
+      </div>
 
-<h2>Our Work</h2>
+    </div>
 
-<div class="grid">
+  </section>
 
-<div class="card">
-<img src="https://source.unsplash.com/400x300/?website">
-<h3>Business Website</h3>
-</div>
+  <!-- SKILLS -->
+  <section id="skills">
 
-<div class="card">
-<img src="https://source.unsplash.com/400x300/?mobile-app">
-<h3>Mobile App UI</h3>
-</div>
+    <h2 class="section-title">Skills</h2>
 
-<div class="card">
-<img src="https://source.unsplash.com/400x300/?technology">
-<h3>AI Dashboard</h3>
-</div>
+    <div class="skills-container">
 
-</div>
+      <div class="skill">
+        <i class="fa-brands fa-html5"></i>
+        <h3>HTML</h3>
+        <div class="bar"><span style="width:95%"></span></div>
+      </div>
 
-</section>
+      <div class="skill">
+        <i class="fa-brands fa-css3-alt"></i>
+        <h3>CSS</h3>
+        <div class="bar"><span style="width:90%"></span></div>
+      </div>
 
-<!-- FEATURES -->
-<section class="section">
+      <div class="skill">
+        <i class="fa-brands fa-js"></i>
+        <h3>JavaScript</h3>
+        <div class="bar"><span style="width:80%"></span></div>
+      </div>
 
-<h2>Why Choose Us</h2>
+      <div class="skill">
+        <i class="fa-solid fa-code"></i>
+        <h3>C++</h3>
+        <div class="bar"><span style="width:75%"></span></div>
+      </div>
 
-<div class="grid">
+      <div class="skill">
+        <i class="fa-brands fa-java"></i>
+        <h3>Java</h3>
+        <div class="bar"><span style="width:70%"></span></div>
+      </div>
 
-<div class="card">
-✔ Fast Delivery
-</div>
+    </div>
 
-<div class="card">
-✔ Mobile Friendly
-</div>
+  </section>
 
-<div class="card">
-✔ WhatsApp Support
-</div>
+  <!-- PROJECTS -->
+  <section id="projects">
 
-<div class="card">
-✔ Affordable Pricing
-</div>
+    <h2 class="section-title">Projects</h2>
 
-</div>
+    <div class="projects">
 
-</section>
+      <div class="project-card">
+        <h3>AI Assistant</h3>
+        <p>
+          Advanced AI powered assistant with modern UI and smart features.
+        </p>
+      </div>
 
-<!-- TESTIMONIAL -->
-<section class="section">
+      <div class="project-card">
+        <h3>Cyber Dashboard</h3>
+        <p>
+          Hacker style futuristic dashboard with animations and live systems.
+        </p>
+      </div>
 
-<h2>Client Reviews</h2>
+      <div class="project-card">
+        <h3>Shop Website</h3>
+        <p>
+          Modern online store website with responsive premium design.
+        </p>
+      </div>
 
-<div class="testimonial">
-🔥 "Professional website with fast delivery"
-</div>
+      <div class="project-card">
+        <h3>Radar System</h3>
+        <p>
+          Experimental scanning system interface with animated tracking UI.
+        </p>
+      </div>
 
-<div class="testimonial">
-💯 "Affordable and modern design"
-</div>
+    </div>
 
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section">
+  <!-- TERMINAL -->
+  <section>
 
-<h2>Start Your Project</h2>
+    <h2 class="section-title">Developer Console</h2>
 
-<div class="form">
+    <div class="terminal">
+      > Initializing System... <br>
+      > Loading Portfolio... <br>
+      > HTML Loaded ✔ <br>
+      > CSS Loaded ✔ <br>
+      > JavaScript Loaded ✔ <br>
+      > C++ Modules Active ✔ <br>
+      > Java Environment Active ✔ <br>
+      > Access Granted... <br>
+      > Welcome Developer 🚀
+    </div>
 
-<input type="text" id="name" placeholder="Your Name">
+  </section>
 
-<input type="text" id="project" placeholder="Project Type">
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
 
-<textarea id="msg"
-placeholder="Tell us about your project"></textarea>
+    <h2 class="section-title">Contact</h2>
 
-<button class="btn" onclick="submitForm()">
-Send Request
-</button>
+    <p>
+      Let's build futuristic projects together.
+    </p>
 
-</div>
+    <div class="socials">
 
-<div class="social">
+      <a href="https://github.com/" target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
 
-<a href="https://www.instagram.com/shaktiai2.o?igsh=dHBuYXA2dDJ1NmYx" target="_blank">
-📸 Instagram
-</a>
+      <a href="https://linkedin.com/" target="_blank">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
 
-</div>
+      <a href="mailto:example@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
 
-</section>
+      <a href="https://instagram.com/" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
 
-<!-- FOOTER -->
-<footer>
+    </div>
 
-© 2026 Shubham App & Web Tech
+  </section>
 
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Shubham Kumar | All Rights Reserved
+  </footer>
 
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/917488184506"
-class="whatsapp">
-💬
-</a>
+  <!-- JAVASCRIPT -->
+  <script>
 
-<!-- INSTALL BUTTON -->
-<button id="installBtn">
-Install App
-</button>
+    // TYPING EFFECT
 
-<script>
+    const text = [
+      "Full Stack Developer",
+      "Cyber UI Designer",
+      "AI Projects Creator",
+      "Frontend Developer"
+    ];
 
-/* WHATSAPP FUNCTION */
+    let count = 0;
+    let index = 0;
+    let currentText = "";
+    let letter = "";
 
-function sendWhatsApp(service){
+    (function type(){
 
-let msg = service;
+      if(count === text.length){
+        count = 0;
+      }
 
-window.open(
-"https://wa.me/917488184506?text=" + encodeURIComponent(msg)
-);
+      currentText = text[count];
+      letter = currentText.slice(0, ++index);
 
-}
+      document.getElementById("typing").textContent = letter;
 
-/* FORM */
+      if(letter.length === currentText.length){
+        count++;
+        index = 0;
+        setTimeout(type, 1200);
+      }else{
+        setTimeout(type, 120);
+      }
 
-function submitForm(){
+    })();
 
-let name =
-document.getElementById("name").value;
 
-let project =
-document.getElementById("project").value;
+    // BACKGROUND CODE ANIMATION
 
-let msg =
-document.getElementById("msg").value;
+    const bg = document.getElementById("bg");
 
-let finalMsg =
-"Name: " + name +
-"%0AProject: " + project +
-"%0AMessage: " + msg;
+    const codes = [
+      "C++",
+      "Java",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "System.out.println();",
+      "#include<iostream>",
+      "<div>",
+      "function()",
+      "Developer",
+      "AI System",
+      "Portfolio"
+    ];
 
-window.open(
-"https://wa.me/917488184506?text=" + finalMsg
-);
+    for(let i=0;i<80;i++){
 
-}
+      const span = document.createElement("span");
 
-/* PWA SERVICE WORKER */
+      span.innerText = codes[Math.floor(Math.random()*codes.length)];
 
-if ('serviceWorker' in navigator) {
+      span.style.left = Math.random()*100 + "%";
 
-window.addEventListener('load', () => {
+      span.style.animationDuration =
+      (Math.random()*10 + 10) + "s";
 
-navigator.serviceWorker.register('sw.js')
+      span.style.fontSize =
+      (Math.random()*18 + 12) + "px";
 
-.then(() => console.log("SW Registered"))
+      bg.appendChild(span);
+    }
 
-.catch(err => console.log(err));
-
-});
-
-}
-
-/* INSTALL BUTTON */
-
-let deferredPrompt;
-
-window.addEventListener(
-'beforeinstallprompt',
-(e) => {
-
-e.preventDefault();
-
-deferredPrompt = e;
-
-document.getElementById("installBtn")
-.style.display = "block";
-
-});
-
-document.getElementById("installBtn")
-.onclick = () => {
-
-if(deferredPrompt){
-
-deferredPrompt.prompt();
-
-deferredPrompt.userChoice.then(() => {
-
-document.getElementById("installBtn")
-.style.display = "none";
-
-});
-
-}
-
-};
-
-</script>
+  </script>
 
 </body>
 </html>
