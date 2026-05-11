@@ -1098,4 +1098,367 @@ powerful modern projects for the future.
 > Initializing System... <br>
 > Loading Portfolio... <br>
 > HTML Loaded ✔ <br>
-  
+> CSS Loaded ✔ <br>
+> JavaScript Loaded ✔ <br>
+> AI Module Active ✔ <br>
+> C++ Environment Active ✔ <br>
+> Java Environment Active ✔ <br>
+> Cyber Security Layer Enabled ✔ <br>
+> Access Granted 🚀
+</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- TESTIMONIALS -->
+<!-- ===================================================== -->
+
+<section>
+<h2 class="section-title">Testimonials</h2>
+
+<div class="testimonials-grid">
+
+<div class="testimonial-card">
+<p>
+Amazing futuristic UI and modern web experience.
+</p>
+<h4>Client Review</h4>
+</div>
+
+<div class="testimonial-card">
+<p>
+Professional developer portfolio with advanced design.
+</p>
+<h4>Creative Feedback</h4>
+</div>
+
+<div class="testimonial-card">
+<p>
+Very modern cyberpunk inspired responsive website.
+</p>
+<h4>Project Feedback</h4>
+</div>
+
+</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- CONTACT -->
+<!-- ===================================================== -->
+
+<section id="contact">
+<h2 class="section-title">Contact Me</h2>
+
+<div class="contact-wrapper">
+
+<div class="contact-info">
+<h3>Let's Build Together</h3>
+
+<p>
+Connect with me for futuristic websites, AI systems,
+portfolio projects and modern UI experiences.
+</p>
+
+<p><strong>Email:</strong> example@gmail.com</p>
+<p><strong>Location:</strong> Bihar, India</p>
+<p><strong>Status:</strong> Available for Projects</p>
+
+<div class="socials">
+
+<a href="https://github.com/shubham-01-star" target="_blank">
+<i class="fa-brands fa-github"></i>
+</a>
+
+<a href="https://instagram.com" target="_blank">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="https://linkedin.com" target="_blank">
+<i class="fa-brands fa-linkedin"></i>
+</a>
+
+<a href="https://wa.me/919109229366" target="_blank">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
+</div>
+
+</div>
+
+<div class="contact-form">
+
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<input type="text" placeholder="Subject">
+<textarea placeholder="Message"></textarea>
+<button>Send Message</button>
+
+</div>
+
+</div>
+</section>
+
+<!-- ===================================================== -->
+<!-- FLOAT BUTTONS -->
+<!-- ===================================================== -->
+
+<div class="whatsapp-float">
+<a href="https://wa.me/919109229366" target="_blank">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+</div>
+
+<div class="ai-btn" onclick="aiMessage()">
+<i class="fa-solid fa-robot"></i>
+</div>
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+
+<footer>
+© 2026 Shubham Kumar | Futuristic Developer Portfolio
+</footer>
+
+<!-- ===================================================== -->
+<!-- JAVASCRIPT -->
+<!-- ===================================================== -->
+
+<script>
+
+// =====================================================
+// TYPING EFFECT
+// =====================================================
+
+const text = [
+"Full Stack Developer",
+"AI Projects Creator",
+"Cyber UI Designer",
+"Frontend Developer",
+"Creative Programmer",
+"Futuristic Web Designer"
+];
+
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
+
+(function type(){
+
+if(count === text.length){
+count = 0;
+}
+
+currentText = text[count];
+letter = currentText.slice(0, ++index);
+
+document.getElementById("typing").textContent = letter;
+
+if(letter.length === currentText.length){
+count++;
+index = 0;
+setTimeout(type,1500);
+}else{
+setTimeout(type,120);
+}
+
+})();
+
+// =====================================================
+// BACKGROUND ANIMATION
+// =====================================================
+
+const bg = document.getElementById("bg");
+
+const codes = [
+"HTML",
+"CSS",
+"JavaScript",
+"C++",
+"Java",
+"AI",
+"Portfolio",
+"Cyber UI",
+"Frontend",
+"Developer",
+"function()",
+"System.out.println();",
+"#include<iostream>",
+"<div>",
+"Animation",
+"Coding",
+"Technology"
+];
+
+for(let i=0;i<100;i++){
+
+const span = document.createElement("span");
+
+span.innerText = codes[Math.floor(Math.random()*codes.length)];
+
+span.style.left = Math.random()*100 + "%";
+
+span.style.animationDuration =
+(Math.random()*10 + 10) + "s";
+
+span.style.fontSize =
+(Math.random()*18 + 12) + "px";
+
+bg.appendChild(span);
+
+}
+
+// =====================================================
+// AI BUTTON
+// =====================================================
+
+function aiMessage(){
+
+alert(
+"Hello Shubham 🚀\n\nYour AI Assistant Is Active."
+);
+
+}
+
+
+
+// =====================================================
+// LOADING SCREEN
+// =====================================================
+
+window.addEventListener("load",function(){
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},2000);
+});
+
+// =====================================================
+// DARK LIGHT MODE
+// =====================================================
+
+function toggleTheme(){
+
+document.body.classList.toggle("light-mode");
+
+}
+
+// =====================================================
+// VISITOR COUNTER DEMO
+// =====================================================
+
+let countNum = Math.floor(Math.random()*500)+100;
+
+const counter = document.getElementById("visitorCounter");
+
+if(counter){
+counter.innerText = countNum;
+}
+
+// =====================================================
+// MATRIX EFFECT
+// =====================================================
+
+const canvas = document.getElementById("matrixCanvas");
+
+if(canvas){
+
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "01AIHTMLCSSJSJAVA";
+const array = letters.split("");
+
+const fontSize = 14;
+const columns = canvas.width/fontSize;
+
+const drops = [];
+
+for(let x=0;x<columns;x++){
+drops[x]=1;
+}
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#00ffff";
+ctx.font=fontSize + "px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+const text=array[Math.floor(Math.random()*array.length)];
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random()>0.975){
+drops[i]=0;
+}
+
+drops[i]++;
+}
+}
+
+setInterval(draw,35);
+
+}
+
+</script>
+
+<!-- ===================================================== -->
+<!-- EXTRA FEATURES -->
+<!-- ===================================================== -->
+
+<div id="loader" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#050816;display:flex;justify-content:center;align-items:center;z-index:10000;font-size:35px;color:#00ffff;font-weight:700;">
+Loading AI Portfolio...
+</div>
+
+<canvas id="matrixCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;opacity:0.15;"></canvas>
+
+<div style="position:fixed;top:100px;right:20px;background:#0d1329;padding:12px 18px;border-radius:15px;border:1px solid #00ffff;z-index:999;color:white;">
+Visitors Online: <span id="visitorCounter"></span>
+</div>
+
+<button onclick="toggleTheme()" style="position:fixed;left:20px;bottom:25px;padding:14px 18px;border:none;border-radius:15px;background:#00ffff;color:black;font-weight:700;z-index:9999;cursor:pointer;">
+Theme
+</button>
+
+<style>
+
+.light-mode{
+background:#f2f2f2;
+color:black;
+}
+
+.light-mode nav,
+.light-mode .skill-card,
+.light-mode .service-card,
+.light-mode .project-card,
+.light-mode .testimonial-card,
+.light-mode .contact-info,
+.light-mode .contact-form,
+.light-mode .stat-box,
+.light-mode .info-box{
+background:white;
+color:black;
+}
+
+.light-mode p,
+.light-mode h1,
+.light-mode h2,
+.light-mode h3,
+.light-mode h4,
+.light-mode a{
+color:black;
+}
+
+body{
+cursor:crosshair;
+}
+
+</style>
+
+</body>
+</html>
+
